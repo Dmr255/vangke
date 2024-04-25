@@ -39,7 +39,7 @@ $ mv cft ~/
 
 nah baru file zipnya tinggal ketik
 
-$ mv .config.zip ~/.config/clash
+$ mv config.zip ~/.config/clash
 
 kalau udh di move semua ketik
 

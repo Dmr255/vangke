@@ -39,7 +39,7 @@ $ mv cft ~/
 
 nah baru file zipnya tinggal ketik
 
-$ mv config.zip ~/.config/clash
+$ mv config.zip ~/
 
 kalau udh di move semua ketik
 
@@ -47,7 +47,12 @@ $ cd
 
 nah lanjut ketik ls kalau muncul file cft artinya udh berhasil berpindah kalau belum ulangi cara di atas
 
-nah kalau udh di pindah
+lanjutkan ketikkan
+
+$ unzip config.zip
+tunggu sampe selesai
+
+nah kalau udh
 ubah perizinan cft biar 777 dengan cara ketik
 
 $ chmod 777 cft (kalau gagal chat gw di t.me/Damzz25)
@@ -62,13 +67,11 @@ nah disini kalian ketik
 
 $ ls
 
-kalau muncul .config.zip artinya udh terpindah kalau belum ulangi lagi
+kalau muncul berbagai isi dari config.zip artinya udh terpindah kalau belum ulangi lagi
 
 tinggal ketik aja
 
-$ unzip .config.zip
-tunggu sampe selesai 
-
+$ cd
 kalau udh selesai ketik 
 
 $ rm -rf .config.zip
@@ -82,8 +85,9 @@ nah kalau udh semua
 tinggal isi akun clash di proxy-provider
 kalau install nano tinggal ketik
 
-$ nano ~/.config/clash/proxy-provider/AKUN-VPN.yaml
+$ cd ~/.config/clash/proxy-provider
 
+$ nano AKUN-VPN.yaml
 isi aja tuh udh gw settingin bagian config.yaml ga usah di ubah ubah cukup isi akun aja btw ga support vless hanya bisa vmess & Trojan ya
 
 setelah isi akun kalau pakai nano pencet di shortcut termux ctrl+x kemudian ketik y dan enter

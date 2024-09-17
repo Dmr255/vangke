@@ -1,0 +1,78 @@
+#port: 7890
+#socks-port: 7891
+#redir-port: 7892
+mixed-port: 7893
+#tproxy-port: 7895
+ipv6: false
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: ""
+bind-address: "*"
+external-ui: Yacd-meta-gh-pages
+unified-delay: true
+profile:
+  store-selected: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  listen: 127.0.0.1:7874
+  nameserver:
+    - 8.8.8.8
+    - 1.0.0.1
+    - https://dns.google/dns-query
+  fallback:
+    - 1.1.1.1
+    - 8.8.4.4
+    - https://cloudflare-dns.com/dns-query
+    - 112.215.203.254
+  default-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+    - 112.215.203.254
+proxies:
+proxy-groups:
+  - name: DamarVPN
+    type: select
+    proxies:
+      - BALANCE
+      - FALLBACK
+      - BESTPING
+  - name: BALANCE
+    type: load-balance
+    strategy: round-robin
+    disable-udp: false
+    use:
+     - AKUN-VPN
+    url: http://www.gstatic.com/generate_204
+    interval: '300'
+  - name: FALLBACK
+    type: fallback
+    strategy: round-robin
+    disable-udp: false
+    use:
+     - AKUN-VPN
+    url: http://www.gstatic.com/generate_204
+    interval: '300'
+  - name: BESTPING
+    type: url-test
+    strategy: round-robin
+    disable-udp: false
+    use:
+     - AKUN-VPN
+    url: http://www.gstatic.com/generate_204
+    interval: '300'
+proxy-providers:
+  AKUN-VPN:
+    type: file
+    path: "./proxy_provider/AKUN-VPN.yaml"
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 30
+rules:  
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- MATCH,DamarVPN
+
